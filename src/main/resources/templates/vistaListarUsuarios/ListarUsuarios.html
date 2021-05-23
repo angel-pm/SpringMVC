@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tutorial Spring boot</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="estilo.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+  <div class="w3-container">
+    <h1>Listando usuarios</h1>
+    <table action="listarUsuarios" method="get" class="w3-table w3-border w3-striped">
+    	<tr class="w3-teal">
+    		<th>ID</th>
+    		<th>Nombre</th>
+    		<th>Apellido</th>
+    	</tr>
+    	<tr th:each="usuario:${usuarios}">
+    		<td th:text=${usuario.idUsuario}></td>
+    		<td th:text=${usuario.nombre}></td>
+    		<td th:text=${usuario.apellido}></td>
+    	</tr>
+    </table>
+  </div>
+</body>
+</html>
