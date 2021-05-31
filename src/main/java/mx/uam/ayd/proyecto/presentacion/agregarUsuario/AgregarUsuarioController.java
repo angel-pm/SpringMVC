@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.extern.slf4j.Slf4j;
+import mx.uam.ayd.proyecto.dto.UsuarioDto;
 import mx.uam.ayd.proyecto.negocio.ServicioGrupo;
 import mx.uam.ayd.proyecto.negocio.ServicioUsuario;
 import mx.uam.ayd.proyecto.negocio.modelo.Grupo;
@@ -58,10 +59,11 @@ public class AgregarUsuarioController {
 	 */
 	@RequestMapping(value = "/agregarUsuario", method = RequestMethod.POST)
 	public String postAgregarUsuario(@RequestParam(value = "nombre", required = true) String nombre,
-			@RequestParam(value = "apellido", required = true) String apellido,
-			@RequestParam(value = "grupo", required = true) String grupo, Model model) {
+									 @RequestParam(value = "apellido", required = true) String apellido,
+									 @RequestParam(value = "edad", required = true) String edad,
+									 @RequestParam(value = "grupo", required = true) String grupo, Model model) {
 
-		log.info("Agregando usuario " + nombre + " " + apellido + " " + grupo);
+		log.info("Agregando usuario " + nombre + " " + apellido + " " + edad + " " + grupo);
 
 		try {
 			
@@ -69,10 +71,15 @@ public class AgregarUsuarioController {
 				return "vistaAgregarUsuario/AgregarUsuarioError";
 			}else {
 				// Invocación al servicio
-				Usuario usuario = servicioUsuario.agregaUsuario(nombre, apellido, grupo);
-
+				//Usuario usuario = servicioUsuario.agregaUsuario(nombre, apellido, grupo);
+				UsuarioDto usuarioDto = new UsuarioDto();
+				usuarioDto.setNombre(nombre);
+				usuarioDto.setApellido(apellido);
+				usuarioDto.setEdad(Integer.parseInt(edad));
+				usuarioDto.setGrupo(Long.parseLong(grupo));
+				usuarioDto = servicioUsuario.agregaUsuario(usuarioDto);
 				// Agregamos el usuario al modelo que se le pasa a la vista
-				model.addAttribute("usuario", usuario);
+				model.addAttribute("usuario", usuarioDto);
 
 				// Redirigimos a la vista de éxito
 				return "vistaAgregarUsuario/AgregarUsuarioExito";

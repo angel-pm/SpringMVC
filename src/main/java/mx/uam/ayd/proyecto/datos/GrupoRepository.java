@@ -1,5 +1,7 @@
 package mx.uam.ayd.proyecto.datos;
 
+import java.util.Optional;
+
 import org.springframework.data.repository.CrudRepository;
 
 import mx.uam.ayd.proyecto.negocio.modelo.Grupo;
@@ -18,7 +20,7 @@ public interface GrupoRepository extends CrudRepository <Grupo, Long> {
 	 * @param nombre
 	 * @return
 	 */
-	public Grupo findByNombre(String nombre);
+	public Optional <Grupo> findByNombre(long idGrupo);
 	
 
 }

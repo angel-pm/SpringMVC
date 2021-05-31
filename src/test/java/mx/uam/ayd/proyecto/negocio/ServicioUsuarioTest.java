@@ -47,7 +47,7 @@ class ServicioUsuarioTest {
 	void testAgregaUsuario() {
 		fail("Not yet implemented");
 	}
-
+/*
 	@Test
 	void testRecuperaUsuarios() {
 
@@ -89,6 +89,6 @@ class ServicioUsuarioTest {
 		
 		
 
-	}
+	}*/
 
 }

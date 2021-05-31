@@ -15,11 +15,15 @@
     		<th>ID</th>
     		<th>Nombre</th>
     		<th>Apellido</th>
+    		<th>Edad</th>
+    		<th>Grupo</th>
     	</tr>
     	<tr th:each="usuario:${usuarios}">
     		<td th:text=${usuario.idUsuario}></td>
     		<td th:text=${usuario.nombre}></td>
     		<td th:text=${usuario.apellido}></td>
+    		<td th:text=${usuario.edad}></td>
+    		<td th:text=${usuario.grupo}></td>
     	</tr>
     </table>
   </div>

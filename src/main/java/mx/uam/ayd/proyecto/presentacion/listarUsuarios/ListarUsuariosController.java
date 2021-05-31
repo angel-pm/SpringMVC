@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import lombok.extern.slf4j.Slf4j;
+import mx.uam.ayd.proyecto.dto.UsuarioDto;
 import mx.uam.ayd.proyecto.negocio.ServicioUsuario;
-import mx.uam.ayd.proyecto.negocio.modelo.Usuario;
+//import mx.uam.ayd.proyecto.negocio.modelo.Usuario;
 
 @Controller
 @Slf4j
@@ -28,7 +29,7 @@ public class ListarUsuariosController {
 		try {
 
 			// Invocación al servicio
-			List <Usuario> usuarios = new ArrayList<>();
+			List <UsuarioDto> usuarios = new ArrayList<>();
 			usuarios = servicioUsuario.recuperaUsuarios();
 
 			// Agregamos el usuario al modelo que se le pasa a la vista
